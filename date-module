@@ -1,0 +1,38 @@
+import { setDefaultResultOrder } from "dns";
+
+var date = new Date();
+const endDate = (val: string) => {
+  let sd: string | null;
+  switch (val) {
+    case "today":
+      // date.setDate(date.getDate() + 1) ;
+      sd = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+      break;
+    case "week":
+      date.setDate(date.getDate() + 7) ;
+      sd = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" +  date.getDate();
+      break;
+    case "month":
+      date.setMonth(date.getMonth() + 1);
+      sd = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+      break;
+    case "year":
+      date.setFullYear(date.getDate() + 1)
+      sd = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+      break;
+    default:
+      sd = null;
+      break;
+  }
+  return sd;
+};
+const date1 = new Date();
+date1.setHours(0);
+date1.setMinutes(0);
+date1.setSeconds(0);
+const startDate: string = date1.getFullYear() + "-" + (date1.getMonth() + 1) + "-" + date1.getDate() +" "+date1.getHours() +":"+date1.getMinutes()+":"+date1.getSeconds();
+const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const getCurrentMonth=(e) =>{
+  return months[e];
+} 
+export { startDate, endDate, getCurrentMonth };
